@@ -1,9 +1,8 @@
-<h1>QUEENS LIST</h1>
+<h1> QUEENS LIST </h1>
 
-<p>Hi <%= @user.username %>,</p>
+<p>Hi <%= @user.first_name %>,</p>
 
-<p>
-Welcome to QUEENS LIST. Click on the link below to activate your account:
+<p>Welcome to QUEENS LIST.<p>
+
+<%= link_to "Click", edit_account_activation_url(@user.activation_token, email: @user.email) %> to activate your account.
 </p>
-
-<%= link_to "activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>

@@ -1,5 +1,7 @@
-Hi <%= @user.username %>,
+Hi <%= @user.first_name %>,
 
-Welcome to QUEENS LIST. Click on the link below to activate your account:
+Welcome to QUEENS LIST.
+
+Follow the link below to activate your account.
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
