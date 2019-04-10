@@ -1,5 +1,67 @@
-jaredharbison = User.create(username: "jaredharbison", first_name: "Jared", last_name: "Harbison", email: "jared.harbison@gmail.com", admin: "true", queen: "false", password_digest: "jared1234")
-bettermidler = User.create(username: "bettermidler", first_name: "Better", last_name: "Midler", email: "better@midler.com", admin: "true", queen: "true", password_digest: "better1234")
-hovabooboo = User.create(username: "hovabooboo", first_name: "Hova", last_name: "Harbison-Ortiz", email: "hova@naughtydog.com", admin: "false", queen: "false", password_digest: "hova1234")
-alyssaedwards = User.create(username: "alyssaedwards", first_name: "Alyssa", last_name: "Edwards", email: "alyssa@edwards.com", admin: "false", queen: "true", password_digest: "alyssa1234")
-#= User.create(username: "", first_name: "", last_name: "", email: "", admin: "", queen: "", password_digest: "")
+User.destroy_all
+
+User.create!(username: "jaredharbison",
+            first_name: "Jared",
+            last_name: "Harbison",
+            email: "jared.harbison@gmail.com",
+            password: "jared1234",
+            password_confirmation: "jared1234",
+            admin: true,
+            queen: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(username: "bettermidler",
+            first_name: "Better",
+            last_name: "Midler",
+            email: "better@midler.com",
+            password: "better1234",
+            password_confirmation: "better1234",
+            admin: true,
+            queen: true,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(username: "hovabooboo",
+            first_name: "Hova",
+            last_name: "Harbison-Ortiz",
+            email: "hova@naughtydog.com",
+            password: "hova1234",
+            password_confirmation: "hova1234",
+            admin: false,
+            queen: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(username: "alyssaedwards",
+            first_name: "Alyssa",
+            last_name: "Edwards",
+            email: "alyssa@edwards.com",
+            password: "alyssa1234",
+            password_confirmation: "alyssa1234",
+            admin: true,
+            queen: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(username: "trinitythetuck",
+            first_name: "Trinity",
+            last_name: "TheTuck",
+            email: "trinity@thetuck.com",
+            password: "trinity1234",
+            password_confirmation: "trinity1234",
+            admin: false,
+            queen: true,
+            activated: true,
+            activated_at: Time.zone.now)
+
+#User.create!(username: "",
+#            first_name: "",
+#            last_name: "",
+#            email: "",
+#            password: "",
+#            password_confirmation: "",
+#            admin: ,
+#            queen: ,
+#            activated: true,
+#            activated_at: Time.zone.now)
