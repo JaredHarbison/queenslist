@@ -4,21 +4,32 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email])
-    if user && user.authenticate(params[:session][:password])
-      if user.activated?
-        log_in user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_back_or user
-      else
-        message = "account not activated"
-        message += "check your email for the activation link"
-        flash[:warning] = message
-        redirect_to root_url
+    if @user = User.find_or_create_by(email: auth['info']['email']) do |u|
+        u.username = auth['info']['name']
+        u.uid = auth['uid']
+        u.image = auth['info']['image']
+        u.password = SecureRandom.hex(12)
       end
+      session[:user_id] = @user.id
+      redirect_to root_url
+      #redirect_back_or @user
     else
-      flash.now[:danger] = 'invalid email/password combination'
-      render 'new'
+      user = User.find_by(email: params[:session][:email])
+      if user && user.authenticate(params[:session][:password])
+        if user.activated?
+          log_in user
+          params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+          redirect_back_or user
+        else
+          message = "account not activated"
+          message += "check your email for the activation link"
+          flash[:warning] = message
+          redirect_to root_url
+        end
+      else
+        flash.now[:danger] = 'invalid email/password combination'
+        render 'new'
+      end
     end
   end
 
@@ -34,6 +45,12 @@ class SessionsController < ApplicationController
 
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
   end
 
 end
