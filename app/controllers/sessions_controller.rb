@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       end
       session[:user_id] = @user.id
       redirect_to root_url
-      #redirect_back_or @user
     else
       user = User.find_by(email: params[:session][:email])
       if user && user.authenticate(params[:session][:password])
