@@ -1,21 +1,16 @@
 <% provide(:title, "home") %>
 <h1><%= base_title %></h1>
 
-  <% if session[:user_id] %>
-    <h1><%= @user.name %></h1>
-    <h2>Email: <%= @user.email %></h2>
-    <h2>Facebook UID: <%= @user.uid %></h2>
-    <img src="<%= @user.image %>">
-  <% else %>
-    <%= link_to('Log in with Facebook!', '/auth/facebook') %><br>or<br>
-    <%= link_to "sign up now", signup_path, class: "btn btn-lg btn-primary" %>
-  <% end %>
+
 
   <% if logged_in? %>
     <div class="row">
       <aside class="col-md-4">
         <section class="user_info">
           <%= render 'shared/user_info' %>
+        </section>
+        <section class="stats">
+          <%= render 'shared/stats' %>
         </section>
         <section class="micropost_form">
           <%= render 'shared/micropost_form' %>
@@ -24,6 +19,16 @@
       <div class="col-md-8">
         <h3>micropost feed</h3>
         <%= render 'shared/feed' %>
-      </div> 
+      </div>
     </div>
+    <% else %>
+      <% if session[:user_id] %>
+        <h1><%= @user.name %></h1>
+        <h2>Email: <%= @user.email %></h2>
+        <h2>Facebook UID: <%= @user.uid %></h2>
+        <img src="<%= @user.image %>">
+      <% else %>
+        <%= link_to('Log in with Facebook!', '/auth/facebook') %><br>or<br>
+        <%= link_to "sign up now", signup_path, class: "btn btn-lg btn-primary" %>
+      <% end %>
   <% end %>
