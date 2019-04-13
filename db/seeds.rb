@@ -64,6 +64,15 @@ User.create!(username: "jaredharbison",
             activated: true,
             activated_at: Time.zone.now)
 
+################following relationships################
+#users = User.all
+#user  = users.first
+#following = users[2..50]
+#followers = users[3..40]
+#following.each { |followed| user.follow(followed) }
+#followers.each { |follower| follower.follow(user) }
+
+################creating a user template################
 #User.create!(username: "",
 #            first_name: "",
 #            last_name: "",
