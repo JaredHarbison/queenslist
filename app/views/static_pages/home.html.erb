@@ -1,5 +1,4 @@
 <% provide(:title, "home") %>
-<h1><%= base_title %></h1>
 
 
 
@@ -28,7 +27,9 @@
         <h2>Facebook UID: <%= @user.uid %></h2>
         <img src="<%= @user.image %>">
       <% else %>
-        <%= link_to('Log in with Facebook!', '/auth/facebook') %><br>or<br>
-        <%= link_to "sign up now", signup_path, class: "btn btn-lg btn-primary" %>
+        <div class="buttons" align="center">
+          <%= link_to('log in with Facebook', '/auth/facebook', class: "btn btn-lg btn-primary") %><br>or<br>
+          <%= link_to "sign up now", signup_path, class: "btn btn-lg btn-primary" %>
+        </div>
       <% end %>
   <% end %>
