@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def base_title
-    "QUEENS LIST"
+    "WerqBook"
   end
 
   def full_title(page_title= '')

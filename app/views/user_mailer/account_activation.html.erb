@@ -1,8 +1,8 @@
-<h1> QUEENS LIST </h1>
+<h1> <%= base_title %> </h1>
 
 <p>Hi <%= @user.first_name %>,</p>
 
-<p>Welcome to QUEENS LIST.<p>
+<p>Welcome to <%= base_title %>.<p>
 
 <%= link_to "Click", edit_account_activation_url(@user.activation_token, email: @user.email) %> to activate your account.
 </p>
