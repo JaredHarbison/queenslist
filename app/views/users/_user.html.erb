@@ -3,6 +3,13 @@
   <%= link_to user.username, user %>
   <% if current_user.admin? && !current_user?(user) %>
     <%= link_to "| delete", user, method: :delete,
-                               data: { confirm: "are you sure?" } %>
+                               data: { confirm: "are you sure?" } %><br>
+    <%= form_for user do |f| %>
+      <%= f.label :queen, "queen?" %>
+      <%= f.check_box :queen %>
+      <%= f.label :admin, "admin? "%>
+      <%= f.check_box :admin %><br>
+      <%= f.submit %>
+    <% end %>
   <% end %>
 </li>
