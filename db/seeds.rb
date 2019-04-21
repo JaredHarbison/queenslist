@@ -1,3 +1,5 @@
+User.destroy_all
+
 User.create!(username: "captainpike",
             first_name: "Christopher",
             last_name: "Pike",
@@ -63,6 +65,9 @@ User.create!(username: "jaredharbison",
             queen: false,
             activated: true,
             activated_at: Time.zone.now)
+
+User.new.get_queens
+
 
 ################following relationships################
 #users = User.all
