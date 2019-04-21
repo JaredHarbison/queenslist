@@ -88,6 +88,36 @@ class User < ApplicationRecord
       following.include?(other_user)
     end
 
+
+    def get_queens
+      index_url = "https://rupaulsdragrace.fandom.com/wiki/Category:Queens"
+      index_doc = Nokogiri::HTML(open(index_url))
+      queen_list = index_doc.css('.tabber').last.css('.thumbimage')
+      queen_index = queen_list.select.with_index {|_, i| i.even?}
+      queen_index[1..185].each do |queen|
+        I18n.enforce_available_locales = false
+        queen_text = "https://rupaulsdragrace.fandom.com/wiki/#{queen.attr("title")}"
+        queen_url = I18n.transliterate(queen_text).split(' ').join('_').gsub(/\(.+/, '')
+        queen_doc = Nokogiri::HTML(open(queen_url))
+        queen_real_name = queen_doc.css("#mw-content-text > aside > section:nth-child(3) > div:nth-child(3) > div").text.split(' ')
+        queen_first_name = queen_real_name[0] || "Ryan"
+        queen_last_name = queen_real_name[1] || "Taylor"
+        queen_username = "#{queen_first_name}#{queen_last_name}"
+        queen_email = Faker::Internet.unique.safe_email
+        #queen_email = "#{queen_first_name}@#{queen_first_name}.com"
+        User.create!(username: queen_username,
+                    first_name: queen_first_name,
+                    last_name: queen_last_name,
+                    email: queen_email,
+                    password: "#{queen_first_name}1234",
+                    password_confirmation: "#{queen_first_name}1234",
+                    admin: false,
+                    queen: true,
+                    activated: true,
+                    activated_at: Time.zone.now)
+      end
+    end
+
   private
 
   def downcase_email
