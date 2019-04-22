@@ -2,21 +2,21 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="row">
-      <%= gravatar_for @user %>
-      <%= full_name(@user) %><br>
-      <%= @user.username %><%= @user.queen ? " (queen) " : ""%><%= @user.admin ? " (admin) " : ""%><br>
-      <%= mail_to @user.email %><br>
-      <%= render 'shared/stats' %>
+      <%= render 'shared/user_info' %>
     </section>
   </aside>
+
+
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3><%= @user.microposts.count %> microposts</h3>
       <ol class="microposts"
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
+
+
 </div>

@@ -1,9 +1,15 @@
 <% @user ||= current_user %>
-<div class="stats">
+<div class="user_info">
+  <h2><a href="<%= microposts_user_path(@user) %>">
+      <%= pluralize(@user.microposts.count, "post") %>
+  </a>  |
+  <a href="<%= followers_user_path(@user) %>">
+      <%= pluralize(@user.followers.count, "follower") %>
+  </a>  |
   <a href="<%= following_user_path(@user) %>">
       following <%= @user.following.count %>
   </a>
-  <a href="<%= followers_user_path(@user) %>">
-      <%= pluralize(@user.followers.count, "follower") %>
-  </a>
+  <%= @user.queen ? "| queen " : ""%>
+  <%= @user.admin ? "| admin " : ""%>
+  </h2>
 </div>

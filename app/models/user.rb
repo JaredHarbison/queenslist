@@ -104,7 +104,6 @@ class User < ApplicationRecord
         queen_last_name = queen_real_name[1] || "Taylor"
         queen_username = "#{queen_first_name}#{queen_last_name}"
         queen_email = Faker::Internet.unique.safe_email
-        #queen_email = "#{queen_first_name}@#{queen_first_name}.com"
         User.create!(username: queen_username,
                     first_name: queen_first_name,
                     last_name: queen_last_name,
