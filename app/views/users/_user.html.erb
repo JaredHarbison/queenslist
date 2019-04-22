@@ -3,12 +3,12 @@
   <%= link_to user.username, user %>
   <% if current_user.admin? && !current_user?(user) %>
     <%= link_to "| delete", user, method: :delete,
-                               data: { confirm: "are you sure?" } %><br>
+                               data: { confirm: "are you sure?" } %>
     <%= form_for user do |f| %>
-      <%= f.label :queen, "queen?" %>
-      <%= f.check_box :queen %>
-      <%= f.label :admin, "admin? "%>
-      <%= f.check_box :admin %><br>
+      <%= f.check_box :queen, class: "cb" %>
+      <%= f.label :queen, "queen?", class: "l" %><br>
+      <%= f.check_box :admin, class: "cb" %>
+      <%= f.label :admin, "admin?", class: "l" %>
       <%= f.submit %>
     <% end %>
   <% end %>

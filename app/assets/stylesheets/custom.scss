@@ -214,6 +214,16 @@ input {
   }
 }
 
+.cb {
+  text-align: center;
+  width: 5%;
+  transform: scale(1.2);
+}
+
+.l {
+   padding-right: 5px;
+}
+
 #session_remember_me {
   width: auto;
   margin-left: 0;
@@ -230,6 +240,8 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+
 
 /* microposts */
 
