@@ -1,3 +1,8 @@
-<%= link_to gravatar_for(current_user, size:100), current_user %>
-<h1><%= link_to current_user.username, current_user, :title => "view your profile" %></h1>
-<span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+<% @user ||= current_user %>
+<section class="user_info">
+  <%= link_to gravatar_for(@user, size:80), @user %>
+  <h1><%= link_to @user.username, @user, :title => "visit profile for #{@user.username}" %></h1>
+  <h2><%= full_name(@user) %></h2>
+  <h2><%= mail_to @user.email, @user.email, :title => "send an email to #{@user.email}" %></h2>
+  <%= render 'shared/stats' %>
+</section>

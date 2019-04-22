@@ -62,14 +62,19 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def microposts
+    @title = "microposts"
+    @user = User.find(params[:id])
+    @users = @user.microposts.paginate(page: params[:page])
+    redirect_to @user
+  end
+
   private
 
   def user_params
-    #### Do I need to take queen and admin out?
     params.require(:user).permit(:id, :username, :email,
                                  :password, :password_confirmation,
-                                 :first_name, :last_name,
-                                 :queen, :admin)
+                                 :first_name, :last_name)
 
   end
 
