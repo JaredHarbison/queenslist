@@ -3,35 +3,35 @@ class SessionsController < ApplicationController
   def new
   end
 
-#  def create
-#    @user = User.find_or_create_by(email: auth['info']['email']) do |u|
-#      u.username = auth['info']['name']
-#      u.uid = auth['uid']
-#      u.image = auth['info']['image']
-#      u.password = SecureRandom.hex(12)
-#    end
-#    session[:user_id] = @user.id
-#    redirect_to root_url
-#  end
-
   def create
-    user = User.find_by(username: params[:session][:username])
-    if user && user.authenticate(params[:session][:password])
-      if user.activated?
-        log_in user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_back_or root_url
-      else
-        message = "account not activated"
-        message += "check your email for the activation link"
-        flash[:warning] = message
-        redirect_to root_url
-      end
-    else
-      flash.now[:danger] = 'invalid email/password combination'
-      render 'new'
+    @user = User.find_or_create_by(email: auth['info']['email']) do |u|
+      u.username = auth['info']['name']
+      u.uid = auth['uid']
+      u.image = auth['info']['image']
+      u.password = SecureRandom.hex(12)
     end
+    session[:user_id] = @user.id
+    redirect_to root_url
   end
+
+#  def create
+#    user = User.find_by(username: params[:session][:username])
+#    if user && user.authenticate(params[:session][:password])
+#      if user.activated?
+#        log_in user
+#        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+#        redirect_back_or root_url
+#      else
+#        message = "account not activated"
+#        message += "check your email for the activation link"
+#        flash[:warning] = message
+#        redirect_to root_url
+#      end
+#    else
+#      flash.now[:danger] = 'invalid email/password combination'
+#      render 'new'
+#    end
+#  end
 
   def destroy
     log_out if logged_in?
