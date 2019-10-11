@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
-  root 'static_pages#home'
+  root 'welcome#index'
   get 'static_pages/home'
   get 'static_pages/help'
   get 'static_pages/about'
