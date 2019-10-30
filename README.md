@@ -15,7 +15,7 @@
 ## Install
 
 ```sh
-npm install 
+bundle install 
 ```
 
 ## Usage
