@@ -76,6 +76,8 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+10.times { users.each { |user| Micropost.create(content: Faker::TvShows::RuPaul.quote, user_id: user.id)}}
+
 
 ################creating a user template################
 #User.create!(username: "",
