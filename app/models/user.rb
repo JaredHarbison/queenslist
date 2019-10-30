@@ -102,9 +102,12 @@ class User < ApplicationRecord
         queen_real_name = queen_doc.css("#mw-content-text > aside > section:nth-child(3) > div:nth-child(3) > div").text.split(' ')
         queen_first_name = queen_real_name[0] || "Ryan"
         queen_last_name = queen_real_name[1] || "Taylor"
-        queen_username = "#{queen_first_name}#{queen_last_name}"
+        queen_username = queen_doc.css("#mw-content-text > aside > section:nth-child(3) > div:nth-child(2) > div").text.gsub(/[^0-9a-z%&!\n\/(). ]/i, '').split(' ').join('_')
+        #queen_username = "#{queen_first_name}#{queen_last_name}"
+        queen_primary_image = queen_doc.css('#mw-content-text > aside > figure > a').attribute('href') || queen_doc.css('#pi-tab-0 > figure > a > img').attribute('src')
         queen_email = Faker::Internet.unique.safe_email
         User.create!(username: queen_username,
+                    image: queen_primary_image,
                     first_name: queen_first_name,
                     last_name: queen_last_name,
                     email: queen_email,
