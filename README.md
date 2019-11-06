@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to queenslist 👋</h1>
+<h1 align="center">Welcome to WerqBook 👋</h1>
 <p>
   <a href="https://github.com/kefranabg/readme-md-generator/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
@@ -8,14 +8,12 @@
   </a>
 </p>
 
-> A twitter-style platform for drag queens and their fans to share gab and gags
-
-### ✨ [Demo](comming soon)
+> A twitter-style platform for drag queens and thier fans to share gab and gags.
 
 ## Install
 
 ```sh
-bundle install 
+bundle install
 ```
 
 ## Usage
@@ -28,12 +26,13 @@ rails db:create && rails db:migrate && rails db:seed && thin start --ssl
 
 👤 **Jared Harbison**
 
+* Website: jaredharbison.com
 * Twitter: [@jaredharbison](https://twitter.com/jaredharbison)
 * Github: [@JaredHarbison](https://github.com/JaredHarbison)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/JaredHarbison/queenslist/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/JaredHarbison/werqbook/issues).
 
 ## Show your support
 
